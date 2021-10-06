@@ -126,6 +126,7 @@ goto end
 
 :cli-up (
     echo ^> Startup docker container instance
+    docker rm -f docker-hfs-%PROJECT_NAME%
     docker run -di ^
         -p 8080:80 ^
         -v %cd%\share:/usr/local/apache2/htdocs/ ^
