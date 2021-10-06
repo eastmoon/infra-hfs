@@ -15,11 +15,18 @@ HTTP File Server ( HTTP 文件服務器 )，是專門用於發布和共享文件
 
 ### Theme
 
-
+Apache 的 HFS，可經由設定 ```.htaccess``` 來規劃不同風格的 HFS，以下為參考範例：
 
 + [Apaxy](https://oupala.github.io/apaxy/)
 + [Apache-Directory-Listing](https://github.com/ramlmn/Apache-Directory-Listing)
 + [CSS Styling Apache Directory Listings.](https://www.linickx.com/css-styling-apache-directory-listings)
+
+在此則基於 Apaxy 專案建置一個 HFS 並分享 ```share``` 內容
+
++ 開啟服務：```apaxy up```
++ 關閉服務：```apaxy down```
+
+由於 Apaxy 的設計結構，不建議直接替換在根目錄位置，避免替換掉相關樣式設定，且可依據掛載來建立多個分享子目錄。
 
 ## 參考
 
