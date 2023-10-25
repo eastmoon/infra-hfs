@@ -4,6 +4,8 @@
 
 HTTP File Server ( HTTP 文件服務器 )，是專門用於發布和共享文件設計了一個免費的 Web 服務器，然而 HFS 是歷史悠久的稱呼，因其設計簡單，在 Apache 被設定為基礎功能，亦稱為 Directory Browsing；現今直接使用 HFS 建置的方式，多會替代為啟用 Apache 來設置。
 
+Apaxy 是採用 Apache 的 [Autoindex](https://httpd.apache.org/docs/2.4/mod/mod_autoindex.html) 模組設計的 Http File Server，其設計是利用 .htaccess 檔案規劃目錄操作與呈現方式。
+
 ## 建置
 
 ### Apache HTTP Server
@@ -27,6 +29,20 @@ Apache 的 HFS，可經由設定 ```.htaccess``` 來規劃不同風格的 HFS，
 + 關閉服務：```apaxy down```
 
 由於 Apaxy 的設計結構，不建議直接替換在根目錄位置，避免替換掉相關樣式設定，且可依據掛載來建立多個分享子目錄。
+
+### Timezone
+
+原則上，Apaxy 是經由 Apache 使用伺服器的 ls 指令取得目錄中的檔案資訊，並將此資訊經由 .htaccess 規範呈現，因此，若要調整時區 ( timezone ) 則需指定容器的時區，以此呈現。
+
+```
+export TZ='Asia/Taipei'
+```
+
+若使用容器啟動服務，則可透過以下指令設定時區
+
+```
+docker run -ti --rm -e "TZ=Asia/Taipei" apaxy
+```
 
 ## 參考
 
