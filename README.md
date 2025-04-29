@@ -44,6 +44,24 @@ export TZ='Asia/Taipei'
 docker run -ti --rm -e "TZ=Asia/Taipei" apaxy
 ```
 
+### Nginx upload API
+
+基於 Nginx 建置一個 Upload 並將檔案共享於 ```share``` 目錄，其主要設計基於 [ngx_http_dav_module](https://nginx.org/en/docs/http/ngx_http_dav_module.html) 模組所實踐的 [WebDAV](https://zh.wikipedia.org/zh-tw/WebDAV) 規範。
+
++ 開啟服務：```upload up```
++ 關閉服務：```upload down```
+
+測試指令：
+
+```
+## 上傳檔案
+curl -T README.md http://localhost:8081/upload/readme.md
+
+## 刪除檔案
+curl -X DELETE http://localhost:8081/upload/readme.md
+```
+> 雖然有設定 MKCOL、COPY、MOVE 方式，但參考文獻[Samples of WebDAV requests with curl and wget](https://github.com/WebDAVDevs/webdav-request-samples/blob/master/webdav_curl.md)操作並無法正常
+
 ## 參考
 
 + [HTTP File Server - wiki](https://en.wikipedia.org/wiki/HTTP_File_Server)

@@ -1,0 +1,13 @@
+#
+#
+location ~ "/upload/([0-9a-zA-Z-.]*)$" {
+    dav_methods  PUT DELETE MKCOL COPY MOVE;
+    client_body_temp_path /tmp/incoming;
+    alias     /data/share/$1;
+    create_full_put_path   on;
+    dav_access             user:rw group:rw all:r;
+
+    client_body_in_file_only on;
+    client_body_buffer_size 128k;
+    client_max_body_size 100M;
+}
